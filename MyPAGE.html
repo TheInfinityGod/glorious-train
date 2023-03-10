@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,12 +23,29 @@
            document.getElementById("answer").value = sum;
          }
          </script>
-         <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-         <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+         <script>
+          function startTime() {
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+            setTimeout(startTime, 1000);
+          }
+          
+          function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+          }
+          </script>
+         
        </div>
        <link rel="stylesheet" href="pastel.css">
 </head>
 <body>
+  <body onload="startTime()">
     <p>First Number: <input id="firstnumber"></p>
     <p>Second Number: <input id="secondnumber"></p>
     <button onclick="add()">Add Them</button>
@@ -35,7 +53,6 @@
     <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
     </iframe>
     <img src="messi.jpg" height="500px" width="500px" alt=”site’s logo”>
-    <py-script> print('Now you can!') </py-script>
 
     <div id="footer">
       <p>&copy; Copyright Åm</p>
